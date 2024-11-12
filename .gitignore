@@ -1,26 +1,23 @@
-# Diretórios e arquivos específicos do Eclipse
+# Eclipse IDE
 .project
 .classpath
 .settings/
 
-# Diretórios de build
-bin/
-target/
+# Pasta src/com/knowhow
+src/com/knowhow/
 
-# Arquivos de compilação temporários
-*.class
-*.jar
-*.war
-*.ear
+# Arquivos temporários
 *.log
+*.tmp
+*.swp
+*.bak
 
 # Arquivos de sistema (específicos de SO)
 .DS_Store      # macOS
 Thumbs.db      # Windows
 
-# Dependências de pacotes Maven
+# Dependências do Maven
 .m2/
 
-# Arquivos de configurações do IDE
+# Outros
 .idea/
-*.iml
