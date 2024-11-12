@@ -1,1 +1,26 @@
-/bin/
+# Diretórios e arquivos específicos do Eclipse
+.project
+.classpath
+.settings/
+
+# Diretórios de build
+bin/
+target/
+
+# Arquivos de compilação temporários
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# Arquivos de sistema (específicos de SO)
+.DS_Store      # macOS
+Thumbs.db      # Windows
+
+# Dependências de pacotes Maven
+.m2/
+
+# Arquivos de configurações do IDE
+.idea/
+*.iml
