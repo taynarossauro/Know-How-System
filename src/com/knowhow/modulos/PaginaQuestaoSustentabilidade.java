@@ -1,4 +1,4 @@
-package modulos;
+package com.knowhow.modulos;
 import javax.swing.*;
 
 public class PaginaQuestaoSustentabilidade extends JFrame {
