@@ -1,4 +1,4 @@
-package com.knowhow.modulos;
+package modulos;
 import javax.swing.*;
 
 public class PaginaConclusao extends JFrame {

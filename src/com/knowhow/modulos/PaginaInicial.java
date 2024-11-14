@@ -1,48 +1,58 @@
-package com.knowhow.modulos;
+package modulos;
 import javax.swing.*;
 
 public class PaginaInicial extends JFrame {
-    private JTextField raTextField;
+    private JTextField campoRA;
+    private JComboBox<String> comboMaterias;
 
     public PaginaInicial() {
-        setTitle("Página Inicial");
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        setTitle("Menu Principal");
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
 
-        JLabel raLabel = new JLabel("Insira seu RA:");
-        raLabel.setBounds(30, 30, 100, 30);
-        add(raLabel);
+        // Campo de entrada para o RA
+        JLabel labelRA = new JLabel("Digite seu RA:");
+        labelRA.setBounds(100, 100, 150, 30);
+        add(labelRA);
 
-        raTextField = new JTextField();
-        raTextField.setBounds(130, 30, 200, 30);
-        add(raTextField);
+        campoRA = new JTextField();
+        campoRA.setBounds(250, 100, 200, 30);
+        add(campoRA);
 
-        JLabel escolhaMateriaLabel = new JLabel("Qual conteúdo gostaria de aprender?", SwingConstants.CENTER);
-        escolhaMateriaLabel.setBounds(30, 70, 300, 30);
-        add(escolhaMateriaLabel);
+        // ComboBox para seleção de matéria
+        JLabel labelMateria = new JLabel("Selecione a matéria:");
+        labelMateria.setBounds(100, 150, 150, 30);
+        add(labelMateria);
 
-        JButton botaoPOO = new JButton("POO");
-        botaoPOO.setBounds(50, 130, 120, 30);
-        botaoPOO.addActionListener(e -> validarRA("POO"));
-        add(botaoPOO);
+        comboMaterias = new JComboBox<>(new String[]{"POO", "BD"}); // Exemplo com duas matérias
+        comboMaterias.setBounds(250, 150, 200, 30);
+        add(comboMaterias);
 
-        JButton botaoBD = new JButton("BD (SQL)");
-        botaoBD.setBounds(200, 130, 120, 30);
-        botaoBD.addActionListener(e -> validarRA("BD (SQL)"));
-        add(botaoBD);
+        // Botão para prosseguir
+        JButton botaoProsseguir = new JButton("Prosseguir");
+        botaoProsseguir.setBounds(250, 200, 150, 40);
+        botaoProsseguir.addActionListener(e -> validarRA());
+        add(botaoProsseguir);
     }
 
-    private void validarRA(String materiaSelecionada) {
-        String ra = raTextField.getText().trim();
-
+    // Método para validar o RA e chamar a próxima tela
+    private void validarRA() {
+        String ra = campoRA.getText();
+        
         if (ra.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Insira seu RA!!", "Erro", JOptionPane.ERROR_MESSAGE);
-        } else if (ra.length() != 6 || !ra.matches("\\d{6}")) {
-            JOptionPane.showMessageDialog(this, "Insira um RA válido!!", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "O campo RA não pode estar vazio.");
+        } else if (ra.length() != 6 || !ra.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "O RA deve conter exatamente 6 números.");
         } else {
-            dispose();
-            new PaginaIntroducao(materiaSelecionada).setVisible(true);
+            // RA válido, seguir para o texto de apoio
+            String materiaSelecionada = (String) comboMaterias.getSelectedItem();
+            new PaginaTextoApoio(materiaSelecionada).setVisible(true);
+            dispose(); // Fecha o MenuPrincipal
         }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new PaginaInicial().setVisible(true));
     }
 }
