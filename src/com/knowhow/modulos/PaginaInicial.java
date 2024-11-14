@@ -20,23 +20,21 @@ public class PaginaInicial extends JFrame {
         campoRA.setBounds(250, 100, 200, 30);
         add(campoRA);
 
-        // ComboBox para seleção de matéria
         JLabel labelMateria = new JLabel("Selecione a matéria:");
         labelMateria.setBounds(100, 150, 150, 30);
         add(labelMateria);
 
-        comboMaterias = new JComboBox<>(new String[]{"POO", "BD"}); // Exemplo com duas matérias
+        comboMaterias = new JComboBox<>(new String[]{"POO", "BD"}); 
         comboMaterias.setBounds(250, 150, 200, 30);
         add(comboMaterias);
 
-        // Botão para prosseguir
         JButton botaoProsseguir = new JButton("Prosseguir");
         botaoProsseguir.setBounds(250, 200, 150, 40);
         botaoProsseguir.addActionListener(e -> validarRA());
         add(botaoProsseguir);
     }
 
-    // Método para validar o RA e chamar a próxima tela
+ 
     private void validarRA() {
         String ra = campoRA.getText();
         
@@ -45,10 +43,10 @@ public class PaginaInicial extends JFrame {
         } else if (ra.length() != 6 || !ra.matches("\\d+")) {
             JOptionPane.showMessageDialog(this, "O RA deve conter exatamente 6 números.");
         } else {
-            // RA válido, seguir para o texto de apoio
+            
             String materiaSelecionada = (String) comboMaterias.getSelectedItem();
             new PaginaTextoApoio(materiaSelecionada).setVisible(true);
-            dispose(); // Fecha o MenuPrincipal
+            dispose(); l
         }
     }
 
