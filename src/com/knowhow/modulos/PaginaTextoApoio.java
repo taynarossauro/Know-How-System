@@ -2,23 +2,23 @@ package modulos;
 import javax.swing.*;
 
 public class PaginaTextoApoio extends JFrame {
-    private String materiaSelecionada; // Armazena a matéria selecionada pelo usuário
+    private String materiaSelecionada; 
 
     public PaginaTextoApoio(String materiaSelecionada) {
         this.materiaSelecionada = materiaSelecionada;
         setTitle("Texto de Apoio - " + materiaSelecionada);
-        setExtendedState(JFrame.MAXIMIZED_BOTH); // Para deixar a tela cheia
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null); // Para controle manual da posição dos componentes
+        setLayout(null); 
 
-        // Cria o JTextArea para exibir o texto de apoio
+       
         JTextArea texto = new JTextArea();
-        texto.setWrapStyleWord(true); // Faz o texto quebrar de forma inteligente
-        texto.setLineWrap(true); // Quebra a linha automaticamente quando atingir o limite
-        texto.setCaretPosition(0); // Para garantir que o texto comece no topo
-        texto.setEditable(false); // Impede que o usuário edite o texto
+        texto.setWrapStyleWord(true);
+        texto.setLineWrap(true); 
+        texto.setCaretPosition(0); 
+        texto.setEditable(false); 
 
-        // Texto de apoio para a matéria selecionada
+        
         if (materiaSelecionada.equals("POO")) {
             texto.setText("O que é?\n"
             		+ "Basicamente, POO é a programação de uma forma mais estrutural, onde são criados objetos, métodos, classes, atributos e construtores, que irão gerar um código, com a finalidade com a qual o programador deseja.\n"
@@ -113,22 +113,21 @@ public class PaginaTextoApoio extends JFrame {
             		+ "Por exemplo, se o Departamento de Veículos Motorizados tivesse um banco de dados, você poderia encontrar uma tabela contendo todos os veículos conhecidos que as pessoas no estado estão dirigindo. Esta tabela poderia armazenar o nome do modelo, tipo, número de rodas e número de portas de cada veículo, por exemplo.</html>");
         }
 
-        // Coloca o JTextArea dentro de um JScrollPane para adicionar a barra de rolagem
         JScrollPane scrollPane = new JScrollPane(texto);
-        scrollPane.setBounds(100, 100, 1000, 500); // Aumentando a área de exibição para 1000x500
+        scrollPane.setBounds(100, 100, 1000, 500); 
         add(scrollPane);
         texto.setCaretPosition(0);
         
         // Botão para seguir para as questões
         JButton botaoSeguir = new JButton("Seguir para questões");
-        botaoSeguir.setBounds(100, 620, 200, 40); // Ajustando a posição do botão
+        botaoSeguir.setBounds(100, 620, 200, 40); 
         botaoSeguir.addActionListener(e -> {
             if (materiaSelecionada.equals("POO")) {
                 new QuestoesPOO().setVisible(true);
             } else if (materiaSelecionada.equals("BD")) {
                 new QuestoesBD().setVisible(true);
             }
-            dispose(); // Fecha a janela atual
+            dispose(); 
         });
         add(botaoSeguir);
     }
