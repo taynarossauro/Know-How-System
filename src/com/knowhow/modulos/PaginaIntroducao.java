@@ -13,7 +13,7 @@ public class PaginaIntroducao extends JFrame {
         introducaoLabel.setBounds(400, 200, 600, 200); 
         add(introducaoLabel);
 
-        // Botão de início do módulo
+      
         JButton botaoIniciar = new JButton("COMEÇAR");
         botaoIniciar.setBounds(600, 500, 200, 40); 
         botaoIniciar.addActionListener(e -> {
